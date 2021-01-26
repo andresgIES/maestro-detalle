@@ -1,35 +1,47 @@
 package com.co.services.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.co.adapter.interfaces.Adapter;
 import com.co.domain.Maquina;
+import com.co.entities.MaquinaEntity;
+import com.co.interfacesjpa.MaquinaRepository;
 import com.co.services.interfaces.ICRUD;
 
 public class MaquinaServiceImpl implements ICRUD<Maquina> {
 
+	@Autowired
+	MaquinaRepository repository;
+	Adapter<Maquina, MaquinaEntity> adapter;
+
 	@Override
 	public void save(Maquina d) {
-		// TODO Auto-generated method stub
-		
+		final MaquinaEntity entidad = adapter.convertFrom(d);
+		repository.save(entidad);
 	}
 
 	@Override
 	public void update(Maquina d) {
-		// TODO Auto-generated method stub
-		
+		final MaquinaEntity entidad = adapter.convertFrom(d);
+		repository.save(entidad);
 	}
 
 	@Override
 	public void delete(Maquina d) {
-		// TODO Auto-generated method stub
-		
+		final MaquinaEntity entidad = adapter.convertFrom(d);
+		repository.delete(entidad);
+
 	}
 
 	@Override
 	public List<Maquina> listAll() {
-		// TODO Auto-generated method stub
-		return null;
+		final List<MaquinaEntity> entidades = repository.findAll();
+		List<Maquina> maquinas = new ArrayList<>(entidades.size());
+		entidades.forEach(entidad -> maquinas.add(adapter.convertTo(entidad)));
+		return maquinas;
 	}
-
 
 }
