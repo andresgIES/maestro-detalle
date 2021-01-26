@@ -17,19 +17,18 @@ import lombok.Setter;
 @Entity
 @Table(name = "clientes")
 public class ClienteEntity {
-	
+
 	@Id
 	@Column(name = "idCliente", nullable = false, unique = true)
 	private Integer id;
-	
+
 	@Column(name = "nombre", nullable = false)
 	private String nombre;
-	
+
 	@Column(name = "direccion", nullable = false)
 	private String direccion;
-	
-	@OneToOne(cascade = { CascadeType.REMOVE, CascadeType.DETACH,
-			CascadeType.REFRESH }, fetch = FetchType.LAZY)
+
+	@OneToOne(cascade = { CascadeType.REMOVE, CascadeType.DETACH, CascadeType.REFRESH }, fetch = FetchType.LAZY)
 	@JoinColumn(name = "id", nullable = false)
 	private CasinoEntity casino;
 
