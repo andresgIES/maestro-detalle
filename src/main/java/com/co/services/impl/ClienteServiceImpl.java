@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.co.adapter.interfaces.Adapter;
 import com.co.domain.Cliente;
@@ -11,7 +12,8 @@ import com.co.entities.ClienteEntity;
 import com.co.interfacesjpa.ClienteRepository;
 import com.co.services.interfaces.ICRUD;
 
-public class ClienteServiceImpl implements ICRUD<Cliente>{
+@Service
+public class ClienteServiceImpl implements ICRUD<Cliente> {
 
 	@Autowired
 	ClienteRepository repository;

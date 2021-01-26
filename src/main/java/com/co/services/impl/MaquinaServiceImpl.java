@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.co.adapter.interfaces.Adapter;
 import com.co.domain.Maquina;
@@ -11,6 +12,7 @@ import com.co.entities.MaquinaEntity;
 import com.co.interfacesjpa.MaquinaRepository;
 import com.co.services.interfaces.ICRUD;
 
+@Service
 public class MaquinaServiceImpl implements ICRUD<Maquina> {
 
 	@Autowired

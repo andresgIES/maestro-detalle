@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.co.adapter.interfaces.Adapter;
 import com.co.domain.Casino;
@@ -11,6 +12,7 @@ import com.co.entities.CasinoEntity;
 import com.co.interfacesjpa.CasinoRepository;
 import com.co.services.interfaces.ICRUD;
 
+@Service
 public class CasinoServiceImpl implements ICRUD<Casino> {
 
 	@Autowired
