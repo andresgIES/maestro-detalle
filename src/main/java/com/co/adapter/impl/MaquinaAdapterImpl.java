@@ -1,21 +1,23 @@
 package com.co.adapter.impl;
 
+import org.modelmapper.ModelMapper;
+
 import com.co.adapter.interfaces.Adapter;
 import com.co.domain.Maquina;
 import com.co.entities.MaquinaEntity;
 
 public class MaquinaAdapterImpl implements Adapter<Maquina, MaquinaEntity>{
 
+	private ModelMapper mapper = new ModelMapper();
+
 	@Override
 	public Maquina convertTo(MaquinaEntity e) {
-		// TODO Auto-generated method stub
-		return null;
+		return (e == null ) ? null : mapper.map(e, Maquina.class);
 	}
 
 	@Override
 	public MaquinaEntity convertFrom(Maquina d) {
-		// TODO Auto-generated method stub
-		return null;
+		return (d == null ) ? null : mapper.map(d, MaquinaEntity.class);
 	}
 
 }
