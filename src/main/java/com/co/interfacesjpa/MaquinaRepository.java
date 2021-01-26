@@ -1,4 +1,4 @@
-package com.co.interfacesJPA;
+package com.co.interfacesjpa;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
