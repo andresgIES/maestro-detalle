@@ -11,5 +11,13 @@ public class Cliente {
 	private String nombre;
 	private String direccion;
 	private Casino casino;
-
+	
+	public Cliente(Integer id, String nombre, String direccion, Casino casino) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.direccion = direccion;
+		this.casino = casino;
+	}
+	
 }
