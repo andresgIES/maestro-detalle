@@ -17,6 +17,8 @@ public class ClienteServiceImpl implements ICRUD<Cliente> {
 
 	@Autowired
 	ClienteRepository repository;
+	
+	@Autowired
 	Adapter<Cliente, ClienteEntity> adapter;
 
 	@Override

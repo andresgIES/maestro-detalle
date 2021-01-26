@@ -3,7 +3,6 @@ package com.co.operaciones;
 import static com.co.constantes.Contadores.ID_MAQUINA;
 import static com.co.constantes.ObjetosDominio.MAQUINA;
 
-
 import com.co.domain.Maquina;
 
 public class MaquinaOperaciones {
@@ -19,7 +18,7 @@ public class MaquinaOperaciones {
 		MAQUINA = new Maquina(ID_MAQUINA, direccion, cantidadJuegos, pantallaTactil);
 
 		ID_MAQUINA++;
-		
+
 		return MAQUINA;
 	}
 

@@ -17,6 +17,8 @@ public class CasinoServiceImpl implements ICRUD<Casino> {
 
 	@Autowired
 	CasinoRepository repository;
+	
+	@Autowired
 	Adapter<Casino, CasinoEntity> adapter;
 
 	@Override
