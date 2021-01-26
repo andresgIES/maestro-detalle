@@ -3,10 +3,9 @@ package com.co.services.impl;
 import java.util.List;
 
 import com.co.domain.Cliente;
-import com.co.entities.ClienteEntity;
 import com.co.services.interfaces.ICRUD;
 
-public class ClienteServiceImpl implements ICRUD<Cliente, ClienteEntity>{
+public class ClienteServiceImpl implements ICRUD<Cliente>{
 
 	@Override
 	public void save(Cliente d) {

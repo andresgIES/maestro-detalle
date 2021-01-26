@@ -3,10 +3,9 @@ package com.co.services.impl;
 import java.util.List;
 
 import com.co.domain.Casino;
-import com.co.entities.CasinoEntity;
 import com.co.services.interfaces.ICRUD;
 
-public class CasinoServiceImpl implements ICRUD<Casino, CasinoEntity>{
+public class CasinoServiceImpl implements ICRUD<Casino>{
 
 	@Override
 	public void save(Casino d) {

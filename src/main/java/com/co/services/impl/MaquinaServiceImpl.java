@@ -3,10 +3,9 @@ package com.co.services.impl;
 import java.util.List;
 
 import com.co.domain.Maquina;
-import com.co.entities.MaquinaEntity;
 import com.co.services.interfaces.ICRUD;
 
-public class MaquinaServiceImpl implements ICRUD<Maquina, MaquinaEntity> {
+public class MaquinaServiceImpl implements ICRUD<Maquina> {
 
 	@Override
 	public void save(Maquina d) {
