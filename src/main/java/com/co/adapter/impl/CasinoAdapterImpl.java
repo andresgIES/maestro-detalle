@@ -1,11 +1,13 @@
 package com.co.adapter.impl;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Component;
 
 import com.co.adapter.interfaces.Adapter;
 import com.co.domain.Casino;
 import com.co.entities.CasinoEntity;
 
+@Component
 public class CasinoAdapterImpl implements Adapter<Casino, CasinoEntity> {
 	
 	private ModelMapper mapper = new ModelMapper();
