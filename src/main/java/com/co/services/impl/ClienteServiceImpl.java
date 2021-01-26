@@ -3,24 +3,25 @@ package com.co.services.impl;
 import java.util.List;
 
 import com.co.domain.Cliente;
+import com.co.entities.ClienteEntity;
 import com.co.services.interfaces.ICRUD;
 
-public class ClienteServiceImpl implements ICRUD<Cliente>{
+public class ClienteServiceImpl implements ICRUD<Cliente, ClienteEntity>{
 
 	@Override
-	public void save() {
+	public void save(Cliente d) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void update() {
+	public void update(Cliente d) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void delete() {
+	public void delete(Cliente d) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -30,5 +31,7 @@ public class ClienteServiceImpl implements ICRUD<Cliente>{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
 
 }

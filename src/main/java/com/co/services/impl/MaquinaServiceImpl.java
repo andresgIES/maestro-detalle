@@ -3,24 +3,25 @@ package com.co.services.impl;
 import java.util.List;
 
 import com.co.domain.Maquina;
+import com.co.entities.MaquinaEntity;
 import com.co.services.interfaces.ICRUD;
 
-public class MaquinaServiceImpl implements ICRUD<Maquina> {
+public class MaquinaServiceImpl implements ICRUD<Maquina, MaquinaEntity> {
 
 	@Override
-	public void save() {
+	public void save(Maquina d) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void update() {
+	public void update(Maquina d) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void delete() {
+	public void delete(Maquina d) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -30,5 +31,6 @@ public class MaquinaServiceImpl implements ICRUD<Maquina> {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 }
