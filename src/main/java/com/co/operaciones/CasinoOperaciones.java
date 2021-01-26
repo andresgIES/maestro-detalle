@@ -6,6 +6,9 @@ import com.co.domain.Casino;
 
 public class CasinoOperaciones {
 
+	private CasinoOperaciones() {
+	}
+
 	public static Casino crearCasino() {
 		final String nombre = "Casino ".concat(String.valueOf(ID_CASINO));
 		final String direccion = "Direccion ".concat(String.valueOf(ID_CASINO));
