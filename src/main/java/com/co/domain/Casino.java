@@ -12,5 +12,14 @@ public class Casino {
 	private String direccion;
 	private Integer cantidadMaquinas;
 	private Maquina maquina;
+		
+	public Casino(Integer id, String nombre, String direccion, Integer cantidadMaquinas, Maquina maquina) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.direccion = direccion;
+		this.cantidadMaquinas = cantidadMaquinas;
+		this.maquina = maquina;
+	}
 
 }
