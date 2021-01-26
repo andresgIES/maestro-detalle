@@ -12,5 +12,4 @@ public class ObjetosDominio {
 	
 	public static Maquina MAQUINA = new Maquina();
 	
-
 }
