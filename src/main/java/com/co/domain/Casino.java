@@ -1,5 +1,10 @@
 package com.co.domain;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class Casino {
 	
 	private Integer id;
