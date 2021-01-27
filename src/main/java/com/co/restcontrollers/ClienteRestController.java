@@ -34,13 +34,13 @@ public class ClienteRestController {
 
 	@PutMapping("/actualizar")
 	public ResponseEntity<Integer> actualizar() {
-		serviceClientes.save(null);
+		serviceClientes.update(ClienteOperaciones.actualizarCliente());
 		return ResponseEntity.status(HttpStatus.OK).build();
 	}
 
 	@DeleteMapping("/eliminar")
 	public ResponseEntity<Integer> borrar() {
-		serviceClientes.save(null);
+		serviceClientes.delete(ClienteOperaciones.obtenerCliente());
 		return ResponseEntity.status(HttpStatus.OK).build();
 	}
 

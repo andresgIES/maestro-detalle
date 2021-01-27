@@ -22,4 +22,10 @@ public class ClienteOperaciones {
 		return CLIENTE;
 	}
 
+	public static Cliente actualizarCliente() {
+		CLIENTE.setNombre("Cliente ".concat(String.valueOf(CLIENTE.getId() + 1)));
+		CLIENTE.setDireccion("Direccion ".concat(String.valueOf(CLIENTE.getId() + 1)));
+		return CLIENTE;
+	}
+
 }
