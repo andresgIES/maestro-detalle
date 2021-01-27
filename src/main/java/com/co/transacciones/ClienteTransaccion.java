@@ -13,11 +13,11 @@ public class ClienteTransaccion {
 	}
 
 	public static String mensajeActualizacion(Cliente actualizar) {
-		return (estadoCliente(actualizar)) ? "Cliente Actualizado" : "No hay Clientes para Actualizar";
+		return (estadoCliente(actualizar)) ? "Cliente Actualizado" : "El cliente NO existe, no se puede actualizar";
 	}
 
 	public static String mensajeEliminado(Cliente eliminar) {
-		return (estadoCliente(eliminar)) ? "Cliente Eliminado" : "No hay Clientes para Eliminar";
+		return (estadoCliente(eliminar)) ? "Cliente Eliminado" : "El cliente NO existe, no se puede eliminar";
 	}
 
 }
