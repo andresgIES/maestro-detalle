@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.co.domain.Cliente;
 import com.co.operaciones.ClienteOperaciones;
+import com.co.services.interfaces.ConsultLast;
 import com.co.services.interfaces.ICRUD;
 
 @RestController
@@ -17,6 +18,9 @@ public class ClienteRestController {
 
 	@Autowired
 	ICRUD<Cliente> serviceClientes;
+
+	@Autowired
+	ConsultLast<Cliente> serviceUltimoRegistro;
 
 	@GetMapping("/listar")
 	public ResponseEntity<Integer> consultar() {
@@ -39,9 +43,16 @@ public class ClienteRestController {
 
 	@GetMapping("/eliminar")
 	public ResponseEntity<String> borrar() {
-		serviceClientes.delete(ClienteOperaciones.obtenerCliente());
-		ClienteOperaciones.crearCliente();
-		return ResponseEntity.status(HttpStatus.OK).body("Cliente eliminado");
+		final Cliente eliminar = serviceUltimoRegistro.consultLast();
+		String mensajeEliminado = "";
+
+		if (eliminar != null) {
+			serviceClientes.delete(eliminar);
+			mensajeEliminado = "Cliente eliminado";
+		} else {
+			mensajeEliminado = "No hay Clientes para Eliminar";
+		}
+		return ResponseEntity.status(HttpStatus.OK).body(mensajeEliminado);
 	}
 
 }
