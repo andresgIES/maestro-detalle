@@ -1,16 +1,21 @@
 package com.co.restcontrollers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.co.domain.Cliente;
-import com.co.operaciones.ClienteOperaciones;
-import com.co.services.interfaces.ConsultLast;
 import com.co.services.interfaces.ICRUD;
+import com.co.services.interfaces.findBy;
 import com.co.transacciones.ClienteTransaccion;
 
 @RestController
@@ -21,37 +26,36 @@ public class ClienteRestController {
 	ICRUD<Cliente> serviceClientes;
 
 	@Autowired
-	ConsultLast<Cliente> serviceUltimoRegistro;
+	findBy<Cliente> serviceEncontrarCliente;
 
 	@GetMapping("/listar")
-	public ResponseEntity<Integer> consultar() {
-		final int clientesCantidad = serviceClientes.listAll().size();
-		return ResponseEntity.status(HttpStatus.OK).body(clientesCantidad);
+	public ResponseEntity<List<Cliente>> consultar() {
+		return ResponseEntity.status(HttpStatus.OK).body(serviceClientes.listAll());
 	}
 
-	@GetMapping("/crear")
-	public ResponseEntity<String> insertar() {
-		Cliente nuevo = ClienteOperaciones.crearCliente();
-		serviceClientes.save(nuevo);
-		return ResponseEntity.status(HttpStatus.OK).body("Exito, nuevo cliente creado");
+	@PostMapping("/crear")
+	public ResponseEntity<String> insertar(@RequestBody Cliente cliente) {
+		serviceClientes.save(cliente);
+		return ResponseEntity.status(HttpStatus.OK)
+				.body("Nuevo cliente creado con nombre: ".concat(cliente.getNombre()));
 	}
 
-	@GetMapping("/actualizar")
-	public ResponseEntity<String> actualizar() {
-		final Cliente actualizar = serviceUltimoRegistro.consultLast();
-		if (ClienteTransaccion.estadoCliente(actualizar)) {
-			serviceClientes.update(actualizar);
+	@PutMapping("/actualizar")
+	public ResponseEntity<String> actualizar(@RequestBody Cliente cliente) {
+		final Cliente clienteActualizar = serviceEncontrarCliente.findById(cliente.getId());
+		if (ClienteTransaccion.estadoCliente(clienteActualizar)) {
+			serviceClientes.update(cliente);
 		}
-		return ResponseEntity.status(HttpStatus.OK).body(ClienteTransaccion.mensajeActualizacion(actualizar));
+		return ResponseEntity.status(HttpStatus.OK).body(ClienteTransaccion.mensajeActualizacion(clienteActualizar));
 	}
 
-	@GetMapping("/eliminar")
-	public ResponseEntity<String> borrar() {
-		final Cliente eliminar = serviceUltimoRegistro.consultLast();
-		if (ClienteTransaccion.estadoCliente(eliminar)) {
-			serviceClientes.delete(eliminar);
+	@DeleteMapping("/eliminar")
+	public ResponseEntity<String> borrar(@RequestBody Cliente cliente) {
+		final Cliente clienteEliminar = serviceEncontrarCliente.findById(cliente.getId());
+		if (ClienteTransaccion.estadoCliente(clienteEliminar)) {
+			serviceClientes.delete(clienteEliminar);
 		}
-		return ResponseEntity.status(HttpStatus.OK).body(ClienteTransaccion.mensajeEliminado(eliminar));
+		return ResponseEntity.status(HttpStatus.OK).body(ClienteTransaccion.mensajeEliminado(clienteEliminar));
 	}
 
 }
