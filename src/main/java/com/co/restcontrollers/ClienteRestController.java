@@ -11,6 +11,7 @@ import com.co.domain.Cliente;
 import com.co.operaciones.ClienteOperaciones;
 import com.co.services.interfaces.ConsultLast;
 import com.co.services.interfaces.ICRUD;
+import com.co.transacciones.ClienteTransaccion;
 
 @RestController
 @RequestMapping("/clientes")
@@ -38,27 +39,19 @@ public class ClienteRestController {
 	@GetMapping("/actualizar")
 	public ResponseEntity<String> actualizar() {
 		final Cliente actualizar = serviceUltimoRegistro.consultLast();
-		String mensajeActualizacion = "";
-		if (actualizar != null) {
+		if (ClienteTransaccion.estadoCliente(actualizar)) {
 			serviceClientes.update(actualizar);
-			mensajeActualizacion = "Cliente Actualizado";
-		} else {
-			mensajeActualizacion = "No hay Clientes para Actualizar";
 		}
-		return ResponseEntity.status(HttpStatus.OK).body(mensajeActualizacion);
+		return ResponseEntity.status(HttpStatus.OK).body(ClienteTransaccion.mensajeActualizacion(actualizar));
 	}
 
 	@GetMapping("/eliminar")
 	public ResponseEntity<String> borrar() {
 		final Cliente eliminar = serviceUltimoRegistro.consultLast();
-		String mensajeEliminado = "";
-		if (eliminar != null) {
+		if (ClienteTransaccion.estadoCliente(eliminar)) {
 			serviceClientes.delete(eliminar);
-			mensajeEliminado = "Cliente eliminado";
-		} else {
-			mensajeEliminado = "No hay Clientes para Eliminar";
 		}
-		return ResponseEntity.status(HttpStatus.OK).body(mensajeEliminado);
+		return ResponseEntity.status(HttpStatus.OK).body(ClienteTransaccion.mensajeEliminado(eliminar));
 	}
 
 }
