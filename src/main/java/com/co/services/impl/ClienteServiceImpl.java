@@ -36,8 +36,7 @@ public class ClienteServiceImpl implements ICRUD<Cliente>, ConsultLast<Cliente> 
 
 	@Override
 	public void delete(Cliente d) {
-		final ClienteEntity entidad = adapter.convertFrom(d);
-		repository.delete(entidad);
+		repository.deleteById((d.getId()));
 	}
 
 	@Override
