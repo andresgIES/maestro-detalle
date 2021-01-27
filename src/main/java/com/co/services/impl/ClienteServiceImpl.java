@@ -10,13 +10,16 @@ import com.co.adapter.interfaces.Adapter;
 import com.co.domain.Cliente;
 import com.co.entities.ClienteEntity;
 import com.co.interfacesjpa.ClienteRepository;
+import com.co.services.interfaces.ConsultLast;
 import com.co.services.interfaces.ICRUD;
 
 @Service
-public class ClienteServiceImpl implements ICRUD<Cliente> {
+public class ClienteServiceImpl implements ICRUD<Cliente>, ConsultLast<Cliente> {
 
 	@Autowired
 	ClienteRepository repository;
+
+	@Autowired
 	Adapter<Cliente, ClienteEntity> adapter;
 
 	@Override
@@ -28,14 +31,12 @@ public class ClienteServiceImpl implements ICRUD<Cliente> {
 	@Override
 	public void update(Cliente d) {
 		final ClienteEntity entidad = adapter.convertFrom(d);
-		repository.save(entidad);
+		repository.updateByidentificacion(entidad.getNombre(), entidad.getDireccion(), entidad.getId());
 	}
 
 	@Override
 	public void delete(Cliente d) {
-		final ClienteEntity entidad = adapter.convertFrom(d);
-		repository.delete(entidad);
-
+		repository.deleteById((d.getId()));
 	}
 
 	@Override
@@ -44,6 +45,12 @@ public class ClienteServiceImpl implements ICRUD<Cliente> {
 		List<Cliente> maquinas = new ArrayList<>(entidades.size());
 		entidades.forEach(entidad -> maquinas.add(adapter.convertTo(entidad)));
 		return maquinas;
+	}
+
+	@Override
+	public Cliente consultLast() {
+		final List<ClienteEntity> entidades = repository.findAll();
+		return (entidades.isEmpty()) ? null : adapter.convertTo(entidades.get(entidades.size() - 1));
 	}
 
 }

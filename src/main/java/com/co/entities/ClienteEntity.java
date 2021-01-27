@@ -4,6 +4,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -19,6 +21,7 @@ import lombok.Setter;
 public class ClienteEntity {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idCliente", nullable = false, unique = true)
 	private Integer id;
 
@@ -28,7 +31,7 @@ public class ClienteEntity {
 	@Column(name = "direccion", nullable = false)
 	private String direccion;
 
-	@OneToOne(cascade = { CascadeType.REMOVE, CascadeType.DETACH, CascadeType.REFRESH }, fetch = FetchType.LAZY)
+	@OneToOne(cascade = { CascadeType.ALL }, fetch = FetchType.LAZY)
 	@JoinColumn(name = "id", nullable = false)
 	private CasinoEntity casino;
 

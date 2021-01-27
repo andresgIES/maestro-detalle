@@ -8,18 +8,27 @@ import com.co.domain.Maquina;
 import com.co.entities.MaquinaEntity;
 
 @Component
-public class MaquinaAdapterImpl implements Adapter<Maquina, MaquinaEntity>{
+public class MaquinaAdapterImpl implements Adapter<Maquina, MaquinaEntity> {
 
 	private ModelMapper mapper = new ModelMapper();
 
 	@Override
 	public Maquina convertTo(MaquinaEntity e) {
-		return (e == null ) ? null : mapper.map(e, Maquina.class);
+		return (e == null) ? null : mapper.map(e, Maquina.class);
 	}
 
 	@Override
 	public MaquinaEntity convertFrom(Maquina d) {
-		return (d == null ) ? null : mapper.map(d, MaquinaEntity.class);
+		if (d == null) {
+			return null;
+		} else {
+			MaquinaEntity entidad = new MaquinaEntity();
+			entidad.setModelo(d.getModelo());
+			entidad.setModelo(d.getModelo());
+			entidad.setCantidadJuegos(d.getCantidadJuegos());
+			entidad.setPantallaTactil(d.isPantallaTactil());
+			return entidad;
+		}
 	}
 
 }

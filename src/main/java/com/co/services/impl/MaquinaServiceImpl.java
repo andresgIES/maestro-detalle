@@ -17,6 +17,8 @@ public class MaquinaServiceImpl implements ICRUD<Maquina> {
 
 	@Autowired
 	MaquinaRepository repository;
+	
+	@Autowired
 	Adapter<Maquina, MaquinaEntity> adapter;
 
 	@Override
