@@ -24,14 +24,15 @@ public class ClienteRestController {
 
 	@GetMapping("/listar")
 	public ResponseEntity<Integer> consultar() {
-		return ResponseEntity.status(HttpStatus.OK).body(serviceClientes.listAll().size());
+		final int clientesCantidad = serviceClientes.listAll().size();
+		return ResponseEntity.status(HttpStatus.OK).body(clientesCantidad);
 	}
 
 	@GetMapping("/crear")
 	public ResponseEntity<String> insertar() {
-		final Cliente nuevo = ClienteOperaciones.crearCliente();
+		Cliente nuevo = ClienteOperaciones.crearCliente();
 		serviceClientes.save(nuevo);
-		return ResponseEntity.status(HttpStatus.OK).body(nuevo.getNombre());
+		return ResponseEntity.status(HttpStatus.OK).body("Exito, nuevo cliente creado");
 	}
 
 	@GetMapping("/actualizar")

@@ -31,7 +31,7 @@ public class ClienteServiceImpl implements ICRUD<Cliente>, ConsultLast<Cliente> 
 	@Override
 	public void update(Cliente d) {
 		final ClienteEntity entidad = adapter.convertFrom(d);
-		repository.save(entidad);
+		repository.updateByidentificacion(entidad.getNombre(), entidad.getDireccion(), entidad.getId());
 	}
 
 	@Override
