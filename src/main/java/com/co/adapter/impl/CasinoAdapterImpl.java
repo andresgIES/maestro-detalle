@@ -31,7 +31,7 @@ public class CasinoAdapterImpl implements Adapter<Casino, CasinoEntity> {
 			return null;
 		} else {
 			CasinoEntity entidad = new CasinoEntity();
-			entidad.setId(d.getId());
+			// entidad.setId(d.getId());
 			entidad.setNombre(d.getNombre());
 			entidad.setDireccion(d.getDireccion());
 			entidad.setCantidadMaquinas(d.getCantidadMaquinas());

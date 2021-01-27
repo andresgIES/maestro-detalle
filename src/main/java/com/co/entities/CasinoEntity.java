@@ -34,7 +34,7 @@ public class CasinoEntity {
 	@Column(name = "cantidad_maquinas", nullable = false)
 	private Integer cantidadMaquinas;
 
-	@OneToOne(cascade = { CascadeType.REMOVE, CascadeType.DETACH, CascadeType.REFRESH }, fetch = FetchType.LAZY)
+	@OneToOne(cascade = { CascadeType.ALL }, fetch = FetchType.LAZY)
 	@JoinColumn(name = "id", nullable = false)
 	private MaquinaEntity maquina;
 
