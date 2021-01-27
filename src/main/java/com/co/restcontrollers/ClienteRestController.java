@@ -36,16 +36,21 @@ public class ClienteRestController {
 
 	@GetMapping("/actualizar")
 	public ResponseEntity<String> actualizar() {
-		final Cliente actualizacion = ClienteOperaciones.obtenerCliente();
-		serviceClientes.update(actualizacion);
-		return ResponseEntity.status(HttpStatus.OK).body(actualizacion.getDireccion());
+		final Cliente actualizar = serviceUltimoRegistro.consultLast();
+		String mensajeActualizacion = "";
+		if (actualizar != null) {
+			serviceClientes.update(actualizar);
+			mensajeActualizacion = "Cliente Actualizado";
+		} else {
+			mensajeActualizacion = "No hay Clientes para Actualizar";
+		}
+		return ResponseEntity.status(HttpStatus.OK).body(mensajeActualizacion);
 	}
 
 	@GetMapping("/eliminar")
 	public ResponseEntity<String> borrar() {
 		final Cliente eliminar = serviceUltimoRegistro.consultLast();
 		String mensajeEliminado = "";
-
 		if (eliminar != null) {
 			serviceClientes.delete(eliminar);
 			mensajeEliminado = "Cliente eliminado";
