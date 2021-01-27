@@ -3,9 +3,7 @@ package com.co.restcontrollers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,26 +20,28 @@ public class ClienteRestController {
 
 	@GetMapping("/listar")
 	public ResponseEntity<Integer> consultar() {
-		serviceClientes.listAll();
 		return ResponseEntity.status(HttpStatus.OK).body(serviceClientes.listAll().size());
 	}
 
 	@GetMapping("/crear")
-	public ResponseEntity<Integer> insertar() {
-		serviceClientes.save(ClienteOperaciones.crearCliente());
-		return ResponseEntity.status(HttpStatus.OK).build();
+	public ResponseEntity<String> insertar() {
+		final Cliente nuevo = ClienteOperaciones.crearCliente();
+		serviceClientes.save(nuevo);
+		return ResponseEntity.status(HttpStatus.OK).body(nuevo.getNombre());
 	}
 
-	@PutMapping("/actualizar")
-	public ResponseEntity<Integer> actualizar() {
-		serviceClientes.update(ClienteOperaciones.actualizarCliente());
-		return ResponseEntity.status(HttpStatus.OK).build();
+	@GetMapping("/actualizar")
+	public ResponseEntity<String> actualizar() {
+		final Cliente actualizacion = ClienteOperaciones.obtenerCliente();
+		serviceClientes.update(actualizacion);
+		return ResponseEntity.status(HttpStatus.OK).body(actualizacion.getDireccion());
 	}
 
-	@DeleteMapping("/eliminar")
-	public ResponseEntity<Integer> borrar() {
+	@GetMapping("/eliminar")
+	public ResponseEntity<String> borrar() {
 		serviceClientes.delete(ClienteOperaciones.obtenerCliente());
-		return ResponseEntity.status(HttpStatus.OK).build();
+		ClienteOperaciones.crearCliente();
+		return ResponseEntity.status(HttpStatus.OK).body("Cliente eliminado");
 	}
 
 }
