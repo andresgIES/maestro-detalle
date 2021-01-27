@@ -17,12 +17,9 @@ public class CasinoAdapterImpl implements Adapter<Casino, CasinoEntity> {
 
 	@Override
 	public Casino convertTo(CasinoEntity e) {
-		if (e == null) {
-			return null;
-		} else {
-			return new Casino(e.getId(), e.getNombre(), e.getDireccion(), e.getCantidadMaquinas(),
-					maquinaMapper.convertTo(e.getMaquina()));
-		}
+		return (e == null) ? null
+				: new Casino(e.getId(), e.getNombre(), e.getDireccion(), e.getCantidadMaquinas(),
+						maquinaMapper.convertTo(e.getMaquina()));
 	}
 
 	@Override
@@ -31,7 +28,6 @@ public class CasinoAdapterImpl implements Adapter<Casino, CasinoEntity> {
 			return null;
 		} else {
 			CasinoEntity entidad = new CasinoEntity();
-			// entidad.setId(d.getId());
 			entidad.setNombre(d.getNombre());
 			entidad.setDireccion(d.getDireccion());
 			entidad.setCantidadMaquinas(d.getCantidadMaquinas());

@@ -17,11 +17,8 @@ public class ClienteAdapterImpl implements Adapter<Cliente, ClienteEntity> {
 
 	@Override
 	public Cliente convertTo(ClienteEntity e) {
-		if (e == null) {
-			return null;
-		} else {
-			return new Cliente(e.getId(), e.getNombre(), e.getDireccion(), casinoMapper.convertTo(e.getCasino()));
-		}
+		return (e == null) ? null
+				: new Cliente(e.getId(), e.getNombre(), e.getDireccion(), casinoMapper.convertTo(e.getCasino()));
 	}
 
 	@Override
@@ -30,7 +27,6 @@ public class ClienteAdapterImpl implements Adapter<Cliente, ClienteEntity> {
 			return null;
 		} else {
 			ClienteEntity entidad = new ClienteEntity();
-			// entidad.setId(d.getId());
 			entidad.setNombre(d.getNombre());
 			entidad.setDireccion(d.getDireccion());
 			entidad.setCasino(casinoMapper.convertFrom(d.getCasino()));

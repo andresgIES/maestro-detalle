@@ -23,7 +23,6 @@ public class MaquinaAdapterImpl implements Adapter<Maquina, MaquinaEntity> {
 			return null;
 		} else {
 			MaquinaEntity entidad = new MaquinaEntity();
-			// entidad.setId(d.getId());
 			entidad.setModelo(d.getModelo());
 			entidad.setModelo(d.getModelo());
 			entidad.setCantidadJuegos(d.getCantidadJuegos());
