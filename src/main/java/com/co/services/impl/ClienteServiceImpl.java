@@ -12,9 +12,10 @@ import com.co.entities.ClienteEntity;
 import com.co.interfacesjpa.ClienteRepository;
 import com.co.services.interfaces.ConsultLast;
 import com.co.services.interfaces.ICRUD;
+import com.co.services.interfaces.findBy;
 
 @Service
-public class ClienteServiceImpl implements ICRUD<Cliente>, ConsultLast<Cliente> {
+public class ClienteServiceImpl implements ICRUD<Cliente>, ConsultLast<Cliente>, findBy<Cliente> {
 
 	@Autowired
 	ClienteRepository repository;
@@ -30,7 +31,7 @@ public class ClienteServiceImpl implements ICRUD<Cliente>, ConsultLast<Cliente> 
 
 	@Override
 	public void update(Cliente d) {
-		final ClienteEntity entidad = adapter.convertFrom(d);
+		ClienteEntity entidad = adapter.convertFrom(d);
 		repository.updateByidentificacion(entidad.getNombre(), entidad.getDireccion(), entidad.getId());
 	}
 
@@ -51,6 +52,11 @@ public class ClienteServiceImpl implements ICRUD<Cliente>, ConsultLast<Cliente> 
 	public Cliente consultLast() {
 		final List<ClienteEntity> entidades = repository.findAll();
 		return (entidades.isEmpty()) ? null : adapter.convertTo(entidades.get(entidades.size() - 1));
+	}
+
+	@Override
+	public Cliente findById(Integer id) {
+		return adapter.convertTo(repository.findById(id).orElse(null));
 	}
 
 }

@@ -27,6 +27,7 @@ public class ClienteAdapterImpl implements Adapter<Cliente, ClienteEntity> {
 			return null;
 		} else {
 			ClienteEntity entidad = new ClienteEntity();
+			entidad.setId(d.getId());
 			entidad.setNombre(d.getNombre());
 			entidad.setDireccion(d.getDireccion());
 			entidad.setCasino(casinoMapper.convertFrom(d.getCasino()));
