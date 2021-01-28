@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class MaestroDetalleApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MaestroDetalleApplication.class, args);
+		SpringApplication.run(MaestroDetalleApplication.class);
 	}
 
 }

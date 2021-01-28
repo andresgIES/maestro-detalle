@@ -1,6 +1,6 @@
 package com.co.services.interfaces;
 
-public interface findBy<D> {
-
+public interface FindBy<D> {
+	
 	public D findById(Integer id);
 }

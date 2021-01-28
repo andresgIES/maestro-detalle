@@ -10,12 +10,11 @@ import com.co.adapter.interfaces.Adapter;
 import com.co.domain.Cliente;
 import com.co.entities.ClienteEntity;
 import com.co.interfacesjpa.ClienteRepository;
-import com.co.services.interfaces.ConsultLast;
 import com.co.services.interfaces.ICRUD;
-import com.co.services.interfaces.findBy;
+import com.co.services.interfaces.FindBy;
 
 @Service
-public class ClienteServiceImpl implements ICRUD<Cliente>, ConsultLast<Cliente>, findBy<Cliente> {
+public class ClienteServiceImpl implements ICRUD<Cliente>, FindBy<Cliente> {
 
 	@Autowired
 	ClienteRepository repository;
@@ -46,12 +45,6 @@ public class ClienteServiceImpl implements ICRUD<Cliente>, ConsultLast<Cliente>,
 		List<Cliente> maquinas = new ArrayList<>(entidades.size());
 		entidades.forEach(entidad -> maquinas.add(adapter.convertTo(entidad)));
 		return maquinas;
-	}
-
-	@Override
-	public Cliente consultLast() {
-		final List<ClienteEntity> entidades = repository.findAll();
-		return (entidades.isEmpty()) ? null : adapter.convertTo(entidades.get(entidades.size() - 1));
 	}
 
 	@Override
