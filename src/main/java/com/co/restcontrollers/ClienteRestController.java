@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.co.domain.Cliente;
 import com.co.services.interfaces.ICRUD;
-import com.co.services.interfaces.findBy;
+import com.co.services.interfaces.FindBy;
 import com.co.transacciones.ClienteTransaccion;
 
 @RestController
@@ -26,7 +26,7 @@ public class ClienteRestController {
 	ICRUD<Cliente> serviceClientes;
 
 	@Autowired
-	findBy<Cliente> serviceEncontrarCliente;
+	FindBy<Cliente> serviceEncontrarCliente;
 
 	@GetMapping("/listar")
 	public ResponseEntity<List<Cliente>> consultar() {
