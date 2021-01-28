@@ -1,10 +1,12 @@
 package com.co.domain;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class Cliente {
 
 	private Integer id;
@@ -18,9 +20,6 @@ public class Cliente {
 		this.nombre = nombre;
 		this.direccion = direccion;
 		this.casino = casino;
-	}
-
-	public Cliente() {
 	}
 
 }
