@@ -19,16 +19,7 @@ public class MaquinaAdapterImpl implements Adapter<Maquina, MaquinaEntity> {
 
 	@Override
 	public MaquinaEntity convertFrom(Maquina d) {
-		if (d == null) {
-			return null;
-		} else {
-			MaquinaEntity entidad = new MaquinaEntity();
-			entidad.setModelo(d.getModelo());
-			entidad.setModelo(d.getModelo());
-			entidad.setCantidadJuegos(d.getCantidadJuegos());
-			entidad.setPantallaTactil(d.isPantallaTactil());
-			return entidad;
-		}
+		return (d == null) ? null : mapper.map(d, MaquinaEntity.class);
 	}
 
 }
