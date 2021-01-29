@@ -32,7 +32,7 @@ public class ClienteEntity {
 	private String direccion;
 
 	@OneToOne(cascade = { CascadeType.ALL }, fetch = FetchType.LAZY)
-	@JoinColumn(name = "id", nullable = false)
+	@JoinColumn(name = "id", nullable = true)
 	private CasinoEntity casino;
 
 }

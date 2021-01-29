@@ -11,7 +11,7 @@ import com.co.persistencia.entities.ClienteEntity;
 import com.co.persistencia.interfacesjpa.ClienteRepository;
 import com.co.services.FindBy;
 import com.co.services.ICRUD;
-import com.co.services.adapter.AdapterFull;
+import com.co.services.adapter.AdapterPartial;
 
 @Service
 public class ClienteServiceImpl implements ICRUD<Cliente>, FindBy<Cliente> {
@@ -20,17 +20,17 @@ public class ClienteServiceImpl implements ICRUD<Cliente>, FindBy<Cliente> {
 	ClienteRepository repository;
 
 	@Autowired
-	AdapterFull<Cliente, ClienteEntity> adapterFull;
+	AdapterPartial<Cliente, ClienteEntity> adapterPartial;
 
 	@Override
 	public void save(Cliente d) {
-		final ClienteEntity entidad = adapterFull.convertFrom(d);
+		final ClienteEntity entidad = adapterPartial.convertFromWithPropertiesNull(d);
 		repository.save(entidad);
 	}
 
 	@Override
 	public void update(Cliente d) {
-		ClienteEntity entidad = adapterFull.convertFrom(d);
+		ClienteEntity entidad = adapterPartial.convertFromWithPropertiesNull(d);
 		repository.updateByidentificacion(entidad.getNombre(), entidad.getDireccion(), entidad.getId());
 	}
 
@@ -43,13 +43,13 @@ public class ClienteServiceImpl implements ICRUD<Cliente>, FindBy<Cliente> {
 	public List<Cliente> listAll() {
 		final List<ClienteEntity> entidades = repository.findAll();
 		List<Cliente> maquinas = new ArrayList<>(entidades.size());
-		entidades.forEach(entidad -> maquinas.add(adapterFull.convertTo(entidad)));
+		entidades.forEach(entidad -> maquinas.add(adapterPartial.convertToWithPropertiesNull(entidad)));
 		return maquinas;
 	}
 
 	@Override
 	public Cliente findById(Integer id) {
-		return adapterFull.convertTo(repository.findById(id).orElse(null));
+		return adapterPartial.convertToWithPropertiesNull(repository.findById(id).orElse(null));
 	}
 
 }
