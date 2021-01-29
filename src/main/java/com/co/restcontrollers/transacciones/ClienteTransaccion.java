@@ -1,4 +1,4 @@
-package com.co.transacciones;
+package com.co.restcontrollers.transacciones;
 
 import com.co.domain.Cliente;
 

@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.co.domain.Cliente;
+import com.co.restcontrollers.transacciones.ClienteTransaccion;
 import com.co.services.FindBy;
 import com.co.services.ICRUD;
-import com.co.transacciones.ClienteTransaccion;
 
 @RestController
 @RequestMapping("/clientes")
