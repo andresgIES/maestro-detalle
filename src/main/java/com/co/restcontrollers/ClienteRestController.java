@@ -23,11 +23,14 @@ import com.co.services.ICRUD;
 @RequestMapping("/clientes")
 public class ClienteRestController {
 
-	@Autowired
-	ICRUD<Cliente> serviceClientes;
+	final ICRUD<Cliente> serviceClientes;
+	final FindBy<Cliente> serviceEncontrarCliente;
 
 	@Autowired
-	FindBy<Cliente> serviceEncontrarCliente;
+	public ClienteRestController(ICRUD<Cliente> serviceClientes, FindBy<Cliente> serviceEncontrarCliente) {
+		this.serviceClientes = serviceClientes;
+		this.serviceEncontrarCliente = serviceEncontrarCliente;
+	}
 
 	@GetMapping("/listar")
 	public ResponseEntity<List<Cliente>> consultar() {
