@@ -13,7 +13,7 @@ import com.co.services.adapter.AdapterFull;
 public class CasinoAdapterImpl implements AdapterFull<Casino, CasinoEntity> {
 
 	@Autowired
-	AdapterFull<Maquina, MaquinaEntity> maquinaMapper;
+	private AdapterFull<Maquina, MaquinaEntity> maquinaMapper;
 
 	@Override
 	public Casino convertTo(CasinoEntity e) {

@@ -23,8 +23,8 @@ import com.co.services.ICRUD;
 @RequestMapping("/clientes")
 public class ClienteRestController {
 
-	final ICRUD<Cliente> serviceClientes;
-	final FindBy<Cliente> serviceEncontrarCliente;
+	private final ICRUD<Cliente> serviceClientes;
+	private final FindBy<Cliente> serviceEncontrarCliente;
 
 	@Autowired
 	public ClienteRestController(ICRUD<Cliente> serviceClientes, FindBy<Cliente> serviceEncontrarCliente) {

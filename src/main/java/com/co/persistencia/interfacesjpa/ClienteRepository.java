@@ -14,7 +14,7 @@ public interface ClienteRepository extends JpaRepository<ClienteEntity, Integer>
 	@Transactional
 	@Modifying
 	@Query(value = "update from ClienteEntity set nombre=:nombre, direccion=:direccion where id=:id")
-	void updateByidentificacion(@Param("nombre") String nombre, @Param("direccion") String direccion,
+	public void updateByidentificacion(@Param("nombre") String nombre, @Param("direccion") String direccion,
 			@Param("id") Integer id);
 
 }
