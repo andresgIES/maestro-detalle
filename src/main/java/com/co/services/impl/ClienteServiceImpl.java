@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.co.adapter.interfaces.Adapter;
+import com.co.adapter.Adapter;
 import com.co.domain.Cliente;
 import com.co.entities.ClienteEntity;
 import com.co.interfacesjpa.ClienteRepository;

@@ -1,4 +1,4 @@
-package com.co.adapter.interfaces;
+package com.co.adapter;
 
 public interface Adapter <D,E>{
 	
