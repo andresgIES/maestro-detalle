@@ -3,11 +3,11 @@ package com.co.adapter.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.co.adapter.Adapter;
 import com.co.domain.Casino;
 import com.co.domain.Cliente;
 import com.co.persistencia.entities.CasinoEntity;
 import com.co.persistencia.entities.ClienteEntity;
+import com.co.services.adapter.Adapter;
 
 @Component
 public class ClienteAdapterImpl implements Adapter<Cliente, ClienteEntity> {

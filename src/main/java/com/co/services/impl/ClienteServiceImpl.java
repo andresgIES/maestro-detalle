@@ -6,12 +6,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.co.adapter.Adapter;
 import com.co.domain.Cliente;
 import com.co.persistencia.entities.ClienteEntity;
 import com.co.persistencia.interfacesjpa.ClienteRepository;
 import com.co.services.FindBy;
 import com.co.services.ICRUD;
+import com.co.services.adapter.Adapter;
 
 @Service
 public class ClienteServiceImpl implements ICRUD<Cliente>, FindBy<Cliente> {

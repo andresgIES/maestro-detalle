@@ -3,9 +3,9 @@ package com.co.adapter.impl;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
-import com.co.adapter.Adapter;
 import com.co.domain.Maquina;
 import com.co.persistencia.entities.MaquinaEntity;
+import com.co.services.adapter.Adapter;
 
 @Component
 public class MaquinaAdapterImpl implements Adapter<Maquina, MaquinaEntity> {
