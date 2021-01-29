@@ -11,13 +11,11 @@ services:
       MYSQL_DATABASE: docker
       MYSQL_PASSWORD: admin
       MYSQL_ROOT_PASSWORD: admin
-    networks: 
-    - java-mysql
+    restart: always
 
   java:
-    image: java-maven
+    image: andresgies/java-maven-mysql:latest
     restart: on-failure
-    build: .
     ports: 
     - 8080:8080
     environment: 
@@ -28,8 +26,3 @@ services:
       DATABASE_PORT: 3306
     depends_on: 
     - mysql
-    networks: 
-    - java-mysql
-
-networks: 
-  java-mysql:
