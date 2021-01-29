@@ -1,4 +1,4 @@
-package com.co.services.interfaces;
+package com.co.services;
 
 import java.util.List;
 

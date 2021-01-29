@@ -1,4 +1,4 @@
-package com.co.entities;
+package com.co.persistencia.entities;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -22,7 +22,7 @@ public class CasinoEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idCasino", nullable = false, unique = true)
+	@Column(name = "id_casino", nullable = false, unique = true)
 	private Integer id;
 
 	@Column(name = "nombre", nullable = false)
@@ -35,7 +35,7 @@ public class CasinoEntity {
 	private Integer cantidadMaquinas;
 
 	@OneToOne(cascade = { CascadeType.ALL }, fetch = FetchType.LAZY)
-	@JoinColumn(name = "id", nullable = false)
+	@JoinColumn(name = "id", nullable = true)
 	private MaquinaEntity maquina;
 
 }
