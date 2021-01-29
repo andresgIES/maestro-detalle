@@ -16,11 +16,14 @@ import com.co.services.adapter.AdapterPartial;
 @Service
 public class ClienteServiceImpl implements ICRUD<Cliente>, FindBy<Cliente> {
 
-	@Autowired
-	ClienteRepository repository;
+	final ClienteRepository repository;
+	final AdapterPartial<Cliente, ClienteEntity> adapterPartial;
 
 	@Autowired
-	AdapterPartial<Cliente, ClienteEntity> adapterPartial;
+	public ClienteServiceImpl(ClienteRepository repository, AdapterPartial<Cliente, ClienteEntity> adapterPartial) {
+		this.repository = repository;
+		this.adapterPartial = adapterPartial;
+	}
 
 	@Override
 	public void save(Cliente d) {
