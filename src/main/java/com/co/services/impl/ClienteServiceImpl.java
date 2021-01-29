@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.co.adapter.Adapter;
 import com.co.domain.Cliente;
-import com.co.interfacesjpa.ClienteRepository;
 import com.co.persistencia.entities.ClienteEntity;
+import com.co.persistencia.interfacesjpa.ClienteRepository;
 import com.co.services.FindBy;
 import com.co.services.ICRUD;
 

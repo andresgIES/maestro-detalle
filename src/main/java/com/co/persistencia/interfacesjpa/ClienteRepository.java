@@ -1,4 +1,4 @@
-package com.co.interfacesjpa;
+package com.co.persistencia.interfacesjpa;
 
 import javax.transaction.Transactional;
 
