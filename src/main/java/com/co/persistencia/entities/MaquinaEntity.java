@@ -18,7 +18,7 @@ public class MaquinaEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idMaquina", nullable = false, unique = true)
+	@Column(name = "id_maquina", nullable = false, unique = true)
 	private Integer id;
 
 	@Column(name = "modelo", nullable = false)

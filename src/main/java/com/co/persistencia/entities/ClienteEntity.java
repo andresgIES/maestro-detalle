@@ -22,7 +22,7 @@ public class ClienteEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idCliente", nullable = false, unique = true)
+	@Column(name = "id_cliente", nullable = false, unique = true)
 	private Integer id;
 
 	@Column(name = "nombre", nullable = false)
