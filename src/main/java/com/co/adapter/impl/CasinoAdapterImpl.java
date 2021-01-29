@@ -6,8 +6,8 @@ import org.springframework.stereotype.Component;
 import com.co.adapter.Adapter;
 import com.co.domain.Casino;
 import com.co.domain.Maquina;
-import com.co.entities.CasinoEntity;
-import com.co.entities.MaquinaEntity;
+import com.co.persistencia.entities.CasinoEntity;
+import com.co.persistencia.entities.MaquinaEntity;
 
 @Component
 public class CasinoAdapterImpl implements Adapter<Casino, CasinoEntity> {

@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 import com.co.adapter.Adapter;
 import com.co.domain.Maquina;
-import com.co.entities.MaquinaEntity;
+import com.co.persistencia.entities.MaquinaEntity;
 
 @Component
 public class MaquinaAdapterImpl implements Adapter<Maquina, MaquinaEntity> {

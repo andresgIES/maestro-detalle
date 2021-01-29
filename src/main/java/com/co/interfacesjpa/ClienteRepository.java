@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import com.co.entities.ClienteEntity;
+import com.co.persistencia.entities.ClienteEntity;
 
 public interface ClienteRepository extends JpaRepository<ClienteEntity, Integer> {
 

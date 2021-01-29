@@ -1,4 +1,4 @@
-package com.co.entities;
+package com.co.persistencia.entities;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -17,12 +17,12 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "clientes")
-public class ClienteEntity {
+@Table(name = "casinos")
+public class CasinoEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idCliente", nullable = false, unique = true)
+	@Column(name = "idCasino", nullable = false, unique = true)
 	private Integer id;
 
 	@Column(name = "nombre", nullable = false)
@@ -31,8 +31,11 @@ public class ClienteEntity {
 	@Column(name = "direccion", nullable = false)
 	private String direccion;
 
+	@Column(name = "cantidad_maquinas", nullable = false)
+	private Integer cantidadMaquinas;
+
 	@OneToOne(cascade = { CascadeType.ALL }, fetch = FetchType.LAZY)
 	@JoinColumn(name = "id", nullable = false)
-	private CasinoEntity casino;
+	private MaquinaEntity maquina;
 
 }
