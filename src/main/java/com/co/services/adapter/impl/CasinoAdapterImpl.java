@@ -7,13 +7,13 @@ import com.co.domain.Casino;
 import com.co.domain.Maquina;
 import com.co.persistencia.entities.CasinoEntity;
 import com.co.persistencia.entities.MaquinaEntity;
-import com.co.services.adapter.Adapter;
+import com.co.services.adapter.AdapterFull;
 
 @Component
-public class CasinoAdapterImpl implements Adapter<Casino, CasinoEntity> {
+public class CasinoAdapterImpl implements AdapterFull<Casino, CasinoEntity> {
 
 	@Autowired
-	Adapter<Maquina, MaquinaEntity> maquinaMapper;
+	AdapterFull<Maquina, MaquinaEntity> maquinaMapper;
 
 	@Override
 	public Casino convertTo(CasinoEntity e) {

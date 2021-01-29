@@ -1,6 +1,6 @@
 package com.co.services.adapter;
 
-public interface Adapter <D,E>{
+public interface AdapterFull <D,E>{
 	
 	public D convertTo (E e);
 	
