@@ -6,31 +6,34 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.co.adapter.interfaces.Adapter;
 import com.co.domain.Cliente;
-import com.co.entities.ClienteEntity;
-import com.co.interfacesjpa.ClienteRepository;
-import com.co.services.interfaces.ICRUD;
-import com.co.services.interfaces.FindBy;
+import com.co.persistencia.entities.ClienteEntity;
+import com.co.persistencia.interfacesjpa.ClienteRepository;
+import com.co.services.FindBy;
+import com.co.services.ICRUD;
+import com.co.services.adapter.AdapterPartial;
 
 @Service
 public class ClienteServiceImpl implements ICRUD<Cliente>, FindBy<Cliente> {
 
-	@Autowired
-	ClienteRepository repository;
+	private final ClienteRepository repository;
+	private final AdapterPartial<Cliente, ClienteEntity> adapterPartial;
 
 	@Autowired
-	Adapter<Cliente, ClienteEntity> adapter;
+	public ClienteServiceImpl(ClienteRepository repository, AdapterPartial<Cliente, ClienteEntity> adapterPartial) {
+		this.repository = repository;
+		this.adapterPartial = adapterPartial;
+	}
 
 	@Override
 	public void save(Cliente d) {
-		final ClienteEntity entidad = adapter.convertFrom(d);
+		final ClienteEntity entidad = adapterPartial.convertFromWithPropertiesNull(d);
 		repository.save(entidad);
 	}
 
 	@Override
 	public void update(Cliente d) {
-		ClienteEntity entidad = adapter.convertFrom(d);
+		ClienteEntity entidad = adapterPartial.convertFromWithPropertiesNull(d);
 		repository.updateByidentificacion(entidad.getNombre(), entidad.getDireccion(), entidad.getId());
 	}
 
@@ -43,13 +46,13 @@ public class ClienteServiceImpl implements ICRUD<Cliente>, FindBy<Cliente> {
 	public List<Cliente> listAll() {
 		final List<ClienteEntity> entidades = repository.findAll();
 		List<Cliente> maquinas = new ArrayList<>(entidades.size());
-		entidades.forEach(entidad -> maquinas.add(adapter.convertTo(entidad)));
+		entidades.forEach(entidad -> maquinas.add(adapterPartial.convertToWithPropertiesNull(entidad)));
 		return maquinas;
 	}
 
 	@Override
 	public Cliente findById(Integer id) {
-		return adapter.convertTo(repository.findById(id).orElse(null));
+		return adapterPartial.convertToWithPropertiesNull(repository.findById(id).orElse(null));
 	}
 
 }

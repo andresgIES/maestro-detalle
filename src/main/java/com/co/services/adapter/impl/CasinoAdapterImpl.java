@@ -1,19 +1,19 @@
-package com.co.adapter.impl;
+package com.co.services.adapter.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.co.adapter.interfaces.Adapter;
 import com.co.domain.Casino;
 import com.co.domain.Maquina;
-import com.co.entities.CasinoEntity;
-import com.co.entities.MaquinaEntity;
+import com.co.persistencia.entities.CasinoEntity;
+import com.co.persistencia.entities.MaquinaEntity;
+import com.co.services.adapter.AdapterFull;
 
 @Component
-public class CasinoAdapterImpl implements Adapter<Casino, CasinoEntity> {
+public class CasinoAdapterImpl implements AdapterFull<Casino, CasinoEntity> {
 
 	@Autowired
-	Adapter<Maquina, MaquinaEntity> maquinaMapper;
+	private AdapterFull<Maquina, MaquinaEntity> maquinaMapper;
 
 	@Override
 	public Casino convertTo(CasinoEntity e) {

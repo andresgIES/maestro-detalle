@@ -1,14 +1,14 @@
-package com.co.adapter.impl;
+package com.co.services.adapter.impl;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
-import com.co.adapter.interfaces.Adapter;
 import com.co.domain.Maquina;
-import com.co.entities.MaquinaEntity;
+import com.co.persistencia.entities.MaquinaEntity;
+import com.co.services.adapter.AdapterFull;
 
 @Component
-public class MaquinaAdapterImpl implements Adapter<Maquina, MaquinaEntity> {
+public class MaquinaAdapterImpl implements AdapterFull<Maquina, MaquinaEntity> {
 
 	private ModelMapper mapper = new ModelMapper();
 

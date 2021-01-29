@@ -1,6 +1,7 @@
 package com.co.restcontrollers;
 
 import java.util.List;
+import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,19 +15,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.co.domain.Cliente;
-import com.co.services.interfaces.ICRUD;
-import com.co.services.interfaces.FindBy;
-import com.co.transacciones.ClienteTransaccion;
+import com.co.restcontrollers.transacciones.ClienteTransaccion;
+import com.co.services.FindBy;
+import com.co.services.ICRUD;
 
 @RestController
 @RequestMapping("/clientes")
 public class ClienteRestController {
 
-	@Autowired
-	ICRUD<Cliente> serviceClientes;
+	private final ICRUD<Cliente> serviceClientes;
+	private final FindBy<Cliente> serviceEncontrarCliente;
 
 	@Autowired
-	FindBy<Cliente> serviceEncontrarCliente;
+	public ClienteRestController(ICRUD<Cliente> serviceClientes, FindBy<Cliente> serviceEncontrarCliente) {
+		this.serviceClientes = serviceClientes;
+		this.serviceEncontrarCliente = serviceEncontrarCliente;
+	}
 
 	@GetMapping("/listar")
 	public ResponseEntity<List<Cliente>> consultar() {
@@ -36,14 +40,13 @@ public class ClienteRestController {
 	@PostMapping("/crear")
 	public ResponseEntity<String> insertar(@RequestBody Cliente cliente) {
 		serviceClientes.save(cliente);
-		return ResponseEntity.status(HttpStatus.OK)
-				.body("Nuevo cliente creado con nombre: ".concat(cliente.getNombre()));
+		return ResponseEntity.status(HttpStatus.OK).body("Nuevo cliente, con nombre: ".concat(cliente.getNombre()));
 	}
 
 	@PutMapping("/actualizar")
 	public ResponseEntity<String> actualizar(@RequestBody Cliente cliente) {
 		final Cliente clienteActualizar = serviceEncontrarCliente.findById(cliente.getId());
-		if (ClienteTransaccion.estadoCliente(clienteActualizar)) {
+		if (Objects.nonNull(clienteActualizar)) {
 			serviceClientes.update(cliente);
 		}
 		return ResponseEntity.status(HttpStatus.OK).body(ClienteTransaccion.mensajeActualizacion(clienteActualizar));
@@ -52,7 +55,7 @@ public class ClienteRestController {
 	@DeleteMapping("/eliminar")
 	public ResponseEntity<String> borrar(@RequestBody Cliente cliente) {
 		final Cliente clienteEliminar = serviceEncontrarCliente.findById(cliente.getId());
-		if (ClienteTransaccion.estadoCliente(clienteEliminar)) {
+		if (Objects.nonNull(clienteEliminar)) {
 			serviceClientes.delete(clienteEliminar);
 		}
 		return ResponseEntity.status(HttpStatus.OK).body(ClienteTransaccion.mensajeEliminado(clienteEliminar));
