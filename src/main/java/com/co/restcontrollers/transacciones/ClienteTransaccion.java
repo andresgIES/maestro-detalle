@@ -8,7 +8,7 @@ public class ClienteTransaccion {
 
 	}
 
-	public static boolean clienteNulo(Cliente clienteNulo) {
+	private static boolean clienteNulo(Cliente clienteNulo) {
 		return clienteNulo != null;
 	}
 

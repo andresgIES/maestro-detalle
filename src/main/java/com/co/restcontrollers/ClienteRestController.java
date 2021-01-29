@@ -1,6 +1,7 @@
 package com.co.restcontrollers;
 
 import java.util.List;
+import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -43,7 +44,7 @@ public class ClienteRestController {
 	@PutMapping("/actualizar")
 	public ResponseEntity<String> actualizar(@RequestBody Cliente cliente) {
 		final Cliente clienteActualizar = serviceEncontrarCliente.findById(cliente.getId());
-		if (ClienteTransaccion.clienteNulo(clienteActualizar)) {
+		if (Objects.nonNull(clienteActualizar)) {
 			serviceClientes.update(cliente);
 		}
 		return ResponseEntity.status(HttpStatus.OK).body(ClienteTransaccion.mensajeActualizacion(clienteActualizar));
@@ -52,7 +53,7 @@ public class ClienteRestController {
 	@DeleteMapping("/eliminar")
 	public ResponseEntity<String> borrar(@RequestBody Cliente cliente) {
 		final Cliente clienteEliminar = serviceEncontrarCliente.findById(cliente.getId());
-		if (ClienteTransaccion.clienteNulo(clienteEliminar)) {
+		if (Objects.nonNull(clienteEliminar)) {
 			serviceClientes.delete(clienteEliminar);
 		}
 		return ResponseEntity.status(HttpStatus.OK).body(ClienteTransaccion.mensajeEliminado(clienteEliminar));
