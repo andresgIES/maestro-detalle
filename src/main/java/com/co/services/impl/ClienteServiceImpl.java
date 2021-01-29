@@ -10,8 +10,8 @@ import com.co.adapter.Adapter;
 import com.co.domain.Cliente;
 import com.co.entities.ClienteEntity;
 import com.co.interfacesjpa.ClienteRepository;
-import com.co.services.interfaces.ICRUD;
-import com.co.services.interfaces.FindBy;
+import com.co.services.FindBy;
+import com.co.services.ICRUD;
 
 @Service
 public class ClienteServiceImpl implements ICRUD<Cliente>, FindBy<Cliente> {

@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.co.domain.Cliente;
-import com.co.services.interfaces.ICRUD;
-import com.co.services.interfaces.FindBy;
+import com.co.services.FindBy;
+import com.co.services.ICRUD;
 import com.co.transacciones.ClienteTransaccion;
 
 @RestController
