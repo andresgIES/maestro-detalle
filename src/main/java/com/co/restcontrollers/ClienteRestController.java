@@ -43,7 +43,7 @@ public class ClienteRestController {
 	@PutMapping("/actualizar")
 	public ResponseEntity<String> actualizar(@RequestBody Cliente cliente) {
 		final Cliente clienteActualizar = serviceEncontrarCliente.findById(cliente.getId());
-		if (ClienteTransaccion.estadoCliente(clienteActualizar)) {
+		if (ClienteTransaccion.clienteNulo(clienteActualizar)) {
 			serviceClientes.update(cliente);
 		}
 		return ResponseEntity.status(HttpStatus.OK).body(ClienteTransaccion.mensajeActualizacion(clienteActualizar));
@@ -52,7 +52,7 @@ public class ClienteRestController {
 	@DeleteMapping("/eliminar")
 	public ResponseEntity<String> borrar(@RequestBody Cliente cliente) {
 		final Cliente clienteEliminar = serviceEncontrarCliente.findById(cliente.getId());
-		if (ClienteTransaccion.estadoCliente(clienteEliminar)) {
+		if (ClienteTransaccion.clienteNulo(clienteEliminar)) {
 			serviceClientes.delete(clienteEliminar);
 		}
 		return ResponseEntity.status(HttpStatus.OK).body(ClienteTransaccion.mensajeEliminado(clienteEliminar));

@@ -8,16 +8,16 @@ public class ClienteTransaccion {
 
 	}
 
-	public static boolean estadoCliente(Cliente clienteNulo) {
+	public static boolean clienteNulo(Cliente clienteNulo) {
 		return clienteNulo != null;
 	}
 
 	public static String mensajeActualizacion(Cliente actualizar) {
-		return (estadoCliente(actualizar)) ? "Cliente Actualizado" : "El cliente NO existe, no se puede actualizar";
+		return (clienteNulo(actualizar)) ? "Cliente Actualizado" : "El cliente NO existe, no se puede actualizar";
 	}
 
 	public static String mensajeEliminado(Cliente eliminar) {
-		return (estadoCliente(eliminar)) ? "Cliente Eliminado" : "El cliente NO existe, no se puede eliminar";
+		return (clienteNulo(eliminar)) ? "Cliente Eliminado" : "El cliente NO existe, no se puede eliminar";
 	}
 
 }
