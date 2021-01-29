@@ -37,8 +37,7 @@ public class ClienteRestController {
 	@PostMapping("/crear")
 	public ResponseEntity<String> insertar(@RequestBody Cliente cliente) {
 		serviceClientes.save(cliente);
-		return ResponseEntity.status(HttpStatus.OK)
-				.body("Nuevo cliente creado con nombre: ".concat(cliente.getNombre()));
+		return ResponseEntity.status(HttpStatus.OK).body("Nuevo cliente, con nombre: ".concat(cliente.getNombre()));
 	}
 
 	@PutMapping("/actualizar")
