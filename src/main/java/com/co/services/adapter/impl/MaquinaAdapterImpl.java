@@ -1,4 +1,4 @@
-package com.co.adapter.impl;
+package com.co.services.adapter.impl;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;

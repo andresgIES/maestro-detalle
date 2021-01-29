@@ -1,4 +1,4 @@
-package com.co.adapter.impl;
+package com.co.services.adapter.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
